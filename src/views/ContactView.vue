@@ -68,16 +68,17 @@ const blogPosts = [
                 <component :is="post.component" />
             </ModalEntry>
 
-            <ModalEntry :show="showQuoteModal" title="Verse of the Month" date="— No Title Required" @close="showQuoteModal = false">
+            <ModalEntry :show="showQuoteModal" title="Verse of the Month" date="— Dearly" @close="showQuoteModal = false">
                 <div class="w-3/4 mx-auto my-6">
                     <div class="ps-10 text-8xl">“</div>
-                    <p class="ps-10 text-2xl -translate-y-8">
-                        Even a passing moment has its fertile past,<br>
-                        its Friday before Saturday,<br>
-                        its May before June.<br>
+                    <p class="ps-10 text-xl -translate-y-8">
+                        It's that baffled look I see a lot.<br>
+                        So hard to describe the smallest details of how<br>
+                        all these dearly gathered together<br>
+                        of how we used to live.<br>
                     </p>
                     <p class="ps-20 -translate-y-4">
-                        &mdash; <span class="italic">Wisława Szymborska</span>
+                        &mdash; <span class="italic">Margaret Atwood</span>
                     </p>
                 </div>
             </ModalEntry>
