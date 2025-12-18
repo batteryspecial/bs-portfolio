@@ -12,20 +12,20 @@ const showContactModal = ref(false)
 const blogPosts = [
     {   id: "post3",
         date: 'September 20, 2025',
-        title: 'The Nature of Hope',
-        summary: "How do random things suddenly turn definite?",
+        title: 'Hoping',
+        summary: "I'm hoping a miracle arrives.",
         component: Content3,
     },
     {   id: "post2",
         date: 'September 18, 2025',
-        title: 'Zooming In and Out',
-        summary: "Chaos and order are not antonyms.",
+        title: 'Out of Focus',
+        summary: "What does it take for me to get back on track?",
         component: Content2,
     },
     {   id: "post1",
         date: 'August 4, 2024',
-        title: 'Nothing is Happening Anymore',
-        summary: "What happened to our childhoods?",
+        title: 'Waterloo?',
+        summary: "Am I ready?",
         component: Content1,
     },
 ]
@@ -40,8 +40,8 @@ const blogPosts = [
                 <button class="bg-white border border-black rounded-md py-2 w-[300px] text-black hover:text-gray-700 transition duration-300" @click="showQuoteModal = true">
                     Verse of the Month
                 </button>
-                <button class="bg-white border border-black rounded-md py-2 w-[300px] text-black hover:text-gray-700 transition duration-300"
-                @click="showContactModal = true">
+                <button class="bg-gray-300 rounded-md py-2 w-[300px] text-black transition duration-300 focus:outline-none"
+                @click="showContactModal = true" disabled>
                     Contact Me
                 </button>
             </div>
@@ -68,17 +68,16 @@ const blogPosts = [
                 <component :is="post.component" />
             </ModalEntry>
 
-            <ModalEntry :show="showQuoteModal" title="Verse of the Month" date="— Dearly" @close="showQuoteModal = false">
+            <ModalEntry :show="showQuoteModal" title="Verse of the Month" date="— Das Parfum" @close="showQuoteModal = false">
                 <div class="w-3/4 mx-auto my-6">
                     <div class="ps-10 text-8xl">“</div>
                     <p class="ps-10 text-xl -translate-y-8">
-                        It's that baffled look I see a lot.<br>
-                        So hard to describe the smallest details of how<br>
-                        all these dearly gathered together<br>
-                        of how we used to live.<br>
+                        He had found the compass for his future life...<br>
+                        he never departed from what he believed was the direction fate had pointed him.
+                        It was clear why he had clung to life so tenaciously, so savagely.<br>
                     </p>
                     <p class="ps-20 -translate-y-4">
-                        &mdash; <span class="italic">Margaret Atwood</span>
+                        &mdash; <span class="italic">Patrick Suskind</span>
                     </p>
                 </div>
             </ModalEntry>
