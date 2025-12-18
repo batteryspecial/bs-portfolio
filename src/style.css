@@ -113,7 +113,6 @@ h1 {
 button {
   font-weight: 500;
   font-family: inherit;
-  background-color: #495f60;
   cursor: pointer;
 }
 button:focus,

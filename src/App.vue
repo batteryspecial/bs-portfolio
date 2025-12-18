@@ -25,7 +25,7 @@ onMounted(async() => {
 
 <template>
     <!-- Static background wrapper -->
-    <div class="main-bg bg-[url(/src/assets/background.jpg)] bg-fixed text-white">
+    <div class="bg-[url(/src/assets/background.jpg)] bg-cover bg-fixed text-white relative z-10">
         <Navbar/>
         <transition name="fade" mode="out-in" @before-enter="handleBeforeEnter" @after-enter="handleAfterEnter">
         <RouterView v-slot="{ Component }">
@@ -38,10 +38,6 @@ onMounted(async() => {
 </template>
 
 <style scoped>
-.main-bg {
-    position: relative;
-    z-index: 1;
-}
 .footer {
     position: fixed;
     z-index: 0;
