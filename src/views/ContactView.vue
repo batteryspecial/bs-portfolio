@@ -40,10 +40,17 @@ const blogPosts = [
                 <button class="bg-white border border-black rounded-md py-2 w-[300px] text-black hover:text-gray-700 transition duration-300" @click="showQuoteModal = true">
                     Verse of the Month
                 </button>
-                <button class="bg-gray-300 rounded-md py-2 w-[300px] text-black transition duration-300 focus:outline-none"
-                @click="showContactModal = true" disabled>
-                    Contact Me
-                </button>
+                <div class="relative group">
+                    <button class="bg-gray-300 rounded-md py-2 w-[300px] text-black focus:outline-none"
+                    @click="showContactModal = true" disabled>
+                        Contact Me
+                        
+                    </button>
+                    <div class="absolute top-1/2 left-full transform -translate-y-1/2 translate-x-2 w-max px-2 py-1 text-sm text-black bg-gray-200 rounded-full shadow-lg opacity-0 transition duration-300 group-hover:opacity-100">
+                        ran out of credits =(
+                    </div>
+                </div>
+                
             </div>
             <div class="border-y-2 border-gray-200">
                 <div v-for="(post, i) in blogPosts" :key="i" @click="activeModal = post.id" class="flex flex-col items-center sm:flex-row sm:items-center py-2 hover:bg-[#476162] transition cursor-pointer">

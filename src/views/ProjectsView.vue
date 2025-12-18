@@ -14,26 +14,35 @@ function toggleSkill(skillAlt) {
 }
 
 import JavaLogo from '../assets/logos/stack/java.png'
+import SQLLogo from '../assets/logos/stack/sqlalchemy.png'
 import JupyterLogo from '../assets/logos/stack/jupyter.png'
 import PythonLogo from '../assets/logos/stack/python.png'
 import JavaScriptLogo from '../assets/logos/stack/javascript.png'
+import VoltaLogo from '../assets/logos/stack/volta.png'
+import AndroidLogo from '../assets/logos/stack/androidstudio.png'
 import VueLogo from '../assets/logos/stack/vuejs.png'
 import ReactLogo from '../assets/logos/stack/reactjs.png'
 import TailwindLogo from '../assets/logos/stack/tailwind.png'
+import CLogo from '../assets/logos/stack/clang.png'
 import BootstrapLogo from '../assets/logos/stack/bootstrap.png'
 import CSharpLogo from '../assets/logos/stack/csharp.png'
+import FlaskLogo from '../assets/logos/stack/flask.png'
 import UnityLogo from '../assets/logos/stack/unity.png'
 
 const skills = [
     { src: JavaLogo, alt: 'Java', shadowColor: '#E51F2F' },
+    { src: SQLLogo, alt: 'SQL', shadowColor: '#ce4359' },
     { src: JupyterLogo, alt: 'Jupyter', shadowColor: '#E87125' },
     { src: PythonLogo, alt: 'Python', shadowColor: '#F1CA3F' },
     { src: JavaScriptLogo, alt: 'JavaScript', shadowColor: '#EDD619' },
+    { src: VoltaLogo, alt: 'Volta', shadowColor: '#edda87' },
     { src: VueLogo, alt: 'Vue.js', shadowColor: '#42b883' },
     { src: ReactLogo, alt: 'React', shadowColor: '#5CD2F0' },
     { src: TailwindLogo, alt: 'Tailwind', shadowColor: '#33B6EE' },
+    { src: CLogo, alt: 'C', shadowColor: '#33B6EE' },
     { src: BootstrapLogo, alt: 'Bootstrap', shadowColor: '#7A27F0' },
     { src: CSharpLogo, alt: 'C#', shadowColor: '#36128A' },
+    { src: FlaskLogo, alt: 'Flask', shadowColor: '#6b6b6b' },
     { src: UnityLogo, alt: 'Unity', shadowColor: '#1C2834' },
 ]
 
