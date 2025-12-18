@@ -21,6 +21,7 @@ import JavaScriptLogo from '../assets/logos/stack/javascript.png'
 import VoltaLogo from '../assets/logos/stack/volta.png'
 import AndroidLogo from '../assets/logos/stack/androidstudio.png'
 import VueLogo from '../assets/logos/stack/vuejs.png'
+import DjangoLogo from '../assets/logos/stack/django.png'
 import ReactLogo from '../assets/logos/stack/reactjs.png'
 import TailwindLogo from '../assets/logos/stack/tailwind.png'
 import CLogo from '../assets/logos/stack/clang.png'
@@ -36,6 +37,8 @@ const skills = [
     { src: PythonLogo, alt: 'Python', shadowColor: '#F1CA3F' },
     { src: JavaScriptLogo, alt: 'JavaScript', shadowColor: '#EDD619' },
     { src: VoltaLogo, alt: 'Volta', shadowColor: '#edda87' },
+    { src: AndroidLogo, alt: 'Android', shadowColor: '#87ba53' },
+    { src: DjangoLogo, alt: 'Django', shadowColor: '#2aaa78' },
     { src: VueLogo, alt: 'Vue.js', shadowColor: '#42b883' },
     { src: ReactLogo, alt: 'React', shadowColor: '#5CD2F0' },
     { src: TailwindLogo, alt: 'Tailwind', shadowColor: '#33B6EE' },
@@ -207,7 +210,7 @@ const timelineEntries = ref([
 ]);
 
 import SkylineSurvivalCover from '../assets/projects/skylinesurvival.png'
-import PortfolioCover from '../assets/projects/personalweb.png'
+import CampusYapCover from '../assets/projects/personalweb.png'
 import ChinookCuriosityCentralCover from '../assets/projects/chinookcuriosity.png'
 import BlockedManCover from '../assets/projects/blockedman.png'
 import ConnectFourCover from '../assets/projects/connect4.png'
@@ -221,17 +224,17 @@ const ProjectList = ref([
         demo: '#',
         repo: 'https://github.com/manfromthefog/skyline-survival',
         skills: ['Unity', 'C#', '.NET',],
-        description: "An improvement to Unity's Battle resource pack. Features a wave counter, smoother movement, new explosive powerups, and new enemies. The project was partially corrupted after a hardware incident, and restoration is ongoing.",
+        description: "An improvement to Unity's Battle resource pack. Features a wave counter, smoother movement, new explosive powerups, and enhanced enemies.",
     },
     
     {   rotation: 0,
         flipped: false,
-        image: PortfolioCover,
-        title: 'Personal Website',
+        image: CampusYapCover,
+        title: 'CampusYap',
         demo: '#',
-        repo: 'https://github.com/manfromthefog',
-        skills: ['Node.js', 'Vue.js', 'Tailwind CSS'],
-        description: 'My portfolio website. Includes my contact info, ProjectsEntry, skills, and a mini-blog page. Built using Vue3 and Tailwind CSS.',
+        repo: 'https://git.uwaterloo.ca/se101-fall2025/projects/project_team_23/-/tree/main',
+        skills: ['Android Studios', 'Flask', 'MySQL'],
+        description: 'A location-aware anonymous discussion Android app for University of Waterloo and Wilfrid Laurier students. The app enables verified campus members to post, reply, and react anonymously to short text-based messages within a defined geographic radius. Posts will only be visible to users in the same verified region.',
     },
     {   rotation: 0,
         flipped: false,
@@ -283,12 +286,21 @@ function flipAll(state) {
 </script>
 
 <template>
-    <div class="w-[70%] mx-auto flex flex-col gap-16 min-h-[calc(100vh-120px)]">
-        <!-- 🔷 Skill Tags (Above ProjectsEntry) -->
-        <section class="w-full">
-            <h1 class="text-5xl font-normal mb-10 text-center">Current Skills</h1>
+    <div class="w-[60%] mx-auto flex flex-col gap-16 min-h-[calc(100vh-120px)]">
+        
+        <!-- 🔷 ProjectsEntry Section -->
+        <section >
+            <h1 class="text-4xl font-normal mb-10">Development Projects</h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <ProjectsEntry v-for="(project, index) in ProjectList" :key="index" :project="project" :rotation="project.rotation" @flip="flipCard(index)" class="transition duration-300">
+                </ProjectsEntry>
+            </div>
+        </section>
+        <!-- Skill Tags (below ProjectsEntry) -->
+        <section class="w-full mb-24">
+            <h1 class="text-4xl font-normal mb-10">Current Skills</h1>
             <!--  -->
-            <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-10 gap-10 justify-start">
+            <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-10 justify-start">
                 <div v-for="skill in skills" :key="skill.alt" class="flex flex-col gap-2 group">
                     <div class="cursor-box rounded-md flex items-center justify-center h-full w-full transition-transform duration-300" :class="{ 'active-glow': activeSkills.has(skill.alt) }" @click="toggleSkill(skill.alt)" :style="{'--shadow-color': skill.shadowColor}">
                         <img :src="skill.src" :alt="skill.alt" class="h-auto w-[70%] py-2"/>
@@ -297,15 +309,8 @@ function flipAll(state) {
                 </div>
             </div>
         </section>
-        <!-- 🔷 ProjectsEntry Section -->
-        <section class="mb-24">
-            <h1 class="text-5xl font-normal mb-10 text-center">Development Projects</h1>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <ProjectsEntry v-for="(project, index) in ProjectList" :key="index" :project="project" :rotation="project.rotation" @flip="flipCard(index)" class="transition duration-300">
-                </ProjectsEntry>
-            </div>
-        </section>
     </div>
+    
     <!-- Timeline Section
     <div class="w-[90%] bg-gray-400 h-[1px] mx-auto"></div>
     <section class="w-full pt-[5rem] pb-10 px-4 md:px-32 z-3">

@@ -3,7 +3,6 @@
     <div class="bg-white/10 px-12 py-4 rounded-b-2xl shadow-md border border-white/20 flex space-x-20">
       <router-link to="/" class="nav-link" :class="{ 'active' : $route.path === '/' }">Home</router-link>
       <router-link to="/projects" class="nav-link" :class="{ 'active' : $route.path === '/projects' }">Projects</router-link>
-      <router-link to="/contact" class="nav-link" :class="{ 'active' : $route.path === '/contact' }">Contact</router-link>
     </div>
   </nav>
 </template>

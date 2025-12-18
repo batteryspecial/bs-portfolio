@@ -1,5 +1,5 @@
 <template>
-    <a :href="href" class="inline-link group relative inline-flex items-center transition duration-300 gap-0.5 px-1" :data-hover-color="color" target="_blank" rel="noopener">
+    <a :href="href" class="inline-link relative inline-flex items-center transition duration-300 gap-0.5 px-1" :data-hover-color="color" target="_blank" rel="noopener">
         <img class="mr-1 h-3 w-auto duration-200" :src="logo" alt=""/>
         <span class="z-40 text-white text-opacity-100">
             <slot>{{ content }}</slot>

@@ -29,8 +29,8 @@ const emit = defineEmits(['flip']);
             </div>
             <!-- Back -->
             <div class="absolute inset-0  backface-hidden overflow-auto flex flex-col" :style="{ transform: 'rotateY(180deg)'}">
-                <div class="p-[5rem] flex-1 flex justify-center">
-                    <span class="text-select-none">{{ project.description }}</span>
+                <div class="p-[2rem] flex-1 flex text-justify justify-center">
+                    <span class="text-select-none text-md">{{ project.description }}</span>
                 </div>
             </div>
         </div>

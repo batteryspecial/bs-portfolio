@@ -11,6 +11,8 @@ import youtubeicon from '../assets/icons/youtube.svg';
 import instagramicon from '../assets/icons/instagram.svg';
 
 import waterloologo from '../assets/logos/uwaterloo.png';
+import orbitalogo from '../assets/logos/uworbital.png'
+import engsoclogo from '../assets/logos/engsoc.png'
 
 const contactinfo = [
     { src: linkedinicon, alt: 'LinkedIn', href: 'https://www.linkedin.com/in/qinkai-li-40198b31a/' },
@@ -81,19 +83,19 @@ onUnmounted(() => {
 
 <template>
     <SpeedInsights/>
-    <div class="flex flex-col relative min-h-[90vh] justify-center">
-        <section class="flex items-center justify-center relative mx-auto w-full mt-[-12rem]">
+    <div class="flex flex-col justify-center min-h-[90vh]">
+        <section class="flex items-center mt-[-10rem] justify-center relative mx-auto w-full">
             <!-- Left: Text Column -->
             <div class="w-full lg:w-1/2 flex flex-col items-center">
                 <div class="px-5 lg:px-20">
                     <div class="relative flex items-center gap-6">
                         <div class="relative group w-auto">
-                            <img src="/src/assets/manfromthefog.jpg" alt="Profile" class="w-32 h-32 object-cover rounded-full border-4 border-[#93c4c6] transition duration-300 polaroid"/>
+                            <img src="/src/assets/battery.jpg" alt="Profile" class="w-32 h-32 object-cover rounded-full transition duration-300 polaroid"/>
                             <span class="absolute -bottom-1 -right-1 text-4xl shake-hover">👋</span>
                         </div>
                         <div>
-                            <h1 class="2xl:text-5xl md:text-4xl text-3xl font-normal mb-2">Man From The Fog</h1>
-                            <h3 class="text-3xl font-normal mb-2">(aka. Qinkai Li)</h3>
+                            <h1 class="2xl:text-5xl md:text-5xl text-5xl font-normal mb-2">Qinkai Li</h1>
+                            <h3 class="text-xl font-normal">"battery special"</h3>
                         </div>
                     </div>
                     <div class="w-full h-[1px] bg-gray-300 mt-[1.5rem] mb-4"></div>
@@ -101,16 +103,13 @@ onUnmounted(() => {
                         <!-- Introduction -->
                         <div class="flex flex-col gap-3">
                             <p class="inline">
-                            I'm a first year studying    <InlineEntry :logo="waterloologo" color="yellow" href="https://uwaterloo.ca/future-students/programs/software-engineering">Software Engineering</InlineEntry> at the University of Waterloo. I'm an engineer, but also a visionary and advocate.
+                            I'm a first year studying <InlineEntry :logo="waterloologo" color="yellow" href="https://uwaterloo.ca/future-students/programs/software-engineering">Software Engineering</InlineEntry> at the University of Waterloo. I'm an engineer, but also a visionary and advocate.
                             </p>
-                            <p class="inline">
-                            In high school, I led three organizations and played an executive role in many others. I became interested in developing web solutions in the process.
+                            <p>
+                                I'm currently developing the Ground Station for <InlineEntry :logo="orbitalogo" color="blue" href="https://www.uworbital.com/">Orbital</InlineEntry> and working on EngHacks with <InlineEntry :logo="engsoclogo" color="purple" href="https://www.engsoc.uwaterloo.ca/">Waterloo Engineering Society</InlineEntry>!
                             </p>
-                            <p class="inline">
-                            I developed an interest in the natural sciences through the IB Diploma, and I aim to continue applying software engineering principles to scientific research in the future.
-                            </p>
-                            <p class="inline">
-                            In my free time, I write poetry and play basketball!
+                            <p>
+                                There's a lot more I'm doing... they'll show up here after I'm done.
                             </p>
                         </div>
                         <!-- Social Media Links -->
