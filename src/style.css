@@ -41,6 +41,7 @@ html::-webkit-scrollbar {
 /** Inline Links **/
 .inline-link {
     font-weight: 600;
+    border-radius: 6px;
     text-decoration: none;
     position: relative;
     transition: all 0.3s ease;
@@ -75,9 +76,7 @@ html::-webkit-scrollbar {
     --text-decoration-color: #2B2B2B;
 }
 .inline-link:hover {
-    background-color: var(--hover-color);
-    text-decoration-color: var(--text-decoration-color);
-    border-radius: 6px;
+  text-decoration-color: var(--text-decoration-color);
 }
 
 /*** Image Styles ***/
@@ -98,6 +97,7 @@ html::-webkit-scrollbar {
   pointer-events: none;
   user-select: none;
 }
+
 /*** Text Styles ***/
 body {
   margin: 0;

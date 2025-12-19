@@ -226,7 +226,15 @@ const ProjectList = ref([
         skills: ['Unity', 'C#', '.NET',],
         description: "An improvement to Unity's Battle resource pack. Features a wave counter, smoother movement, new explosive powerups, and enhanced enemies.",
     },
-    
+    {   rotation: 0,
+        flipped: false,
+        image: ContainmentCover,
+        title: 'Algebra Tools',
+        demo: '#',
+        repo: 'https://github.com/manfromthefog/abstract-algebra-tools',
+        skills: ['Django', 'Regex', 'JS'],
+        description: "An app I built for the pure sake of personal learning. Implements concepts from University of Waterloo's MATH135 course, such as Truth Tables, Extended Euclidean Algorithm, RSA, etc.",
+    },
     {   rotation: 0,
         flipped: false,
         image: CampusYapCover,
@@ -242,7 +250,7 @@ const ProjectList = ref([
         title: 'Chinook Curiosity Central',
         demo: 'https://chinookcuriositycentral.vercel.app',
         repo: 'https://github.com/manfromthefog/chinookcuriositycentral',
-        skills: ['HTML', 'CSS', 'Bootstrap', 'Javascript'],
+        skills: ['HTML', 'CSS', 'JS', 'Bootstrap'],
         description: 'A website rehaul for a nonprofit I co-founded. HTML, CSS, Javascript, and Bootstrap for responsive design. Middleware hosted on Vercel. Backend updates are coming for when the organization grows.',
     },
     {   rotation: 0,
@@ -251,7 +259,7 @@ const ProjectList = ref([
         title: 'Blocked Man',
         demo: '#',
         repo: 'https://github.com/manfromthefog/blocked-man',
-        skills: ['Unity', 'C#', 'WebGL'],
+        skills: ['Unity', 'Unity Cloud', 'WebGL'],
         description: "A fun Unity game built on Skyline Survival's resource pack. You control a sphere in third person and must precisely avoid obstacles to reach the end. Explosive powerups are available! A WebGL build is present but not active.",
     },
     {   rotation: 0,
@@ -263,15 +271,7 @@ const ProjectList = ref([
         skills: ['Java', 'JSwing', 'JPanel', 'MiniMax',],
         description: 'A basic implementation of the minimax AI algorithm in Connect 4. Graphics powered by Java Swing and JPanel. The AI is playable, and features adjustable depth.',
     },
-    {   rotation: 0,
-        flipped: false,
-        image: ContainmentCover,
-        title: 'Containment',
-        demo: '#',
-        repo: 'https://github.com/manfromthefog/Containment-1',
-        skills: ['Django', 'CSS', 'HTML', 'SQL'],
-        description: 'My very first full-stack web application built on Django, featuring a form, basic CSS, and a SQL database. I sunset the application due to backend security concerns.',
-    },
+    
 ]);
 
 function flipCard(index) {
@@ -286,22 +286,27 @@ function flipAll(state) {
 </script>
 
 <template>
-    <div class="w-[60%] mx-auto flex flex-col gap-16 min-h-[calc(100vh-120px)]">
-        
+    <div class="w-[75%] mx-auto flex flex-col gap-16 min-h-[calc(100vh-120px)]">
         <!-- 🔷 ProjectsEntry Section -->
-        <section >
-            <h1 class="text-4xl font-normal mb-10">Development Projects</h1>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <section>
+            <div class="font-normal mb-10">
+                <h1 >Projects</h1><br>
+                <h2 class="text-xl">
+                    In my projects, I like to include the skills I learned, not necessarily all the skills I used. I want my projects to reflect my growth and my development, although they might not be impressive, all of them reflect a part of who I am.
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <ProjectsEntry v-for="(project, index) in ProjectList" :key="index" :project="project" :rotation="project.rotation" @flip="flipCard(index)" class="transition duration-300">
                 </ProjectsEntry>
             </div>
         </section>
         <!-- Skill Tags (below ProjectsEntry) -->
-        <section class="w-full mb-24">
-            <h1 class="text-4xl font-normal mb-10">Current Skills</h1>
+        <section class="border outline-5 rounded-xl bg-slate-400 bg-opacity-50 mb-24">
+            <h1 class="p-4 text-4xl font-normal border-b-2">Current Skills</h1>
             <!--  -->
-            <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-10 justify-start">
-                <div v-for="skill in skills" :key="skill.alt" class="flex flex-col gap-2 group">
+            <div class="p-5 grid grid-cols-3 md:grid-cols-6 lg:grid-cols-10 gap-5 justify-start">
+                <div v-for="skill in skills" :key="skill.alt" class="inset-shadow-xl p-2 flex flex-col gap-4 group">
                     <div class="cursor-box rounded-md flex items-center justify-center h-full w-full transition-transform duration-300" :class="{ 'active-glow': activeSkills.has(skill.alt) }" @click="toggleSkill(skill.alt)" :style="{'--shadow-color': skill.shadowColor}">
                         <img :src="skill.src" :alt="skill.alt" class="h-auto w-[70%] py-2"/>
                     </div>
@@ -332,7 +337,6 @@ function flipAll(state) {
     transition: all 0.3s ease;
     background: linear-gradient(145deg, #f2f2f2, #e6e6e6);
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
 .active-glow, .cursor-box:hover {

@@ -44,7 +44,7 @@ const updateSocialLinksPosition = () => {
     const visibleAmount = Math.max(0, 
         Math.min(
             placeholder.offsetHeight, // max possible
-            viewportHeight - placeholderRect.top // actual visible amount
+            viewportHeight - placeholderRect.top - 10 // actual visible amount
         )
     );
 
@@ -83,14 +83,14 @@ onUnmounted(() => {
 
 <template>
     <SpeedInsights/>
-    <div class="flex flex-col justify-center min-h-[90vh]">
+    <div class="flex flex-col mx-auto justify-center min-h-[90vh] lg:w-full w-[90%]">
         <section class="flex items-center mt-[-10rem] justify-center relative mx-auto w-full">
             <!-- Left: Text Column -->
             <div class="w-full lg:w-1/2 flex flex-col items-center">
                 <div class="px-5 lg:px-20">
                     <div class="relative flex items-center gap-6">
                         <div class="relative group w-auto">
-                            <img src="/src/assets/battery.jpg" alt="Profile" class="w-32 h-32 object-cover rounded-full transition duration-300 polaroid"/>
+                            <img src="/src/assets/battery.jpg" alt="Profile" class="w-32 h-32 object-cover backdrop-brightness-0 rounded-full transition duration-300 polaroid"/>
                             <span class="absolute -bottom-1 -right-1 text-4xl shake-hover">👋</span>
                         </div>
                         <div>
@@ -103,13 +103,13 @@ onUnmounted(() => {
                         <!-- Introduction -->
                         <div class="flex flex-col gap-3">
                             <p class="inline">
-                            I'm a first year studying <InlineEntry :logo="waterloologo" color="yellow" href="https://uwaterloo.ca/future-students/programs/software-engineering">Software Engineering</InlineEntry> at the University of Waterloo. I'm an engineer, but also a visionary and advocate.
+                            I'm a first year studying <InlineEntry :logo="waterloologo" color="yellow" href="https://uwaterloo.ca/future-students/programs/software-engineering">Software Engineering</InlineEntry> at the University of Waterloo. I'm an engineer, but an explorer at heart.
                             </p>
                             <p>
                                 I'm currently developing the Ground Station for <InlineEntry :logo="orbitalogo" color="blue" href="https://www.uworbital.com/">Orbital</InlineEntry> and working on EngHacks with <InlineEntry :logo="engsoclogo" color="purple" href="https://www.engsoc.uwaterloo.ca/">Waterloo Engineering Society</InlineEntry>!
                             </p>
                             <p>
-                                There's a lot more I'm doing... they'll show up here after I'm done.
+                                There's a lot more I'm doing. They'll show up here (or on LinkedIn) if I'm done.
                             </p>
                         </div>
                         <!-- Social Media Links -->
