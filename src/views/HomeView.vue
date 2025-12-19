@@ -44,7 +44,7 @@ const updateSocialLinksPosition = () => {
     const visibleAmount = Math.max(0, 
         Math.min(
             placeholder.offsetHeight, // max possible
-            viewportHeight - placeholderRect.top // actual visible amount
+            viewportHeight - placeholderRect.top - 10 // actual visible amount
         )
     );
 

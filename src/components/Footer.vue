@@ -17,7 +17,7 @@ const socialIcons = [
         <div class="mx-auto max-w-7xl h-full grid grid-cols-1 md:grid-cols-3">
             <!-- Left: Image -->
             <div class="flex items-center justify-center">
-                <img src="/src/assets/battery.jpg" alt="Battery" class="max-h-[160px] rounded-3xl opacity-90 mb-5 justify-center md:justify-start md:mb-0"/>
+                <img src="/src/assets/level-100.jpg" alt="Battery" class="max-h-[160px] rounded-3xl opacity-90 mb-5 justify-center md:justify-start md:mb-0"/>
             </div>
 
             <!-- Right: Content -->
