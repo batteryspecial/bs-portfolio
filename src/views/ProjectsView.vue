@@ -259,7 +259,7 @@ const ProjectList = ref([
         title: 'Blocked Man',
         demo: '#',
         repo: 'https://github.com/manfromthefog/blocked-man',
-        skills: ['Unity', 'C#', 'WebGL'],
+        skills: ['Unity', 'Unity Cloud', 'WebGL'],
         description: "A fun Unity game built on Skyline Survival's resource pack. You control a sphere in third person and must precisely avoid obstacles to reach the end. Explosive powerups are available! A WebGL build is present but not active.",
     },
     {   rotation: 0,
@@ -306,7 +306,7 @@ function flipAll(state) {
             <h1 class="p-4 text-4xl font-normal border-b-2">Current Skills</h1>
             <!--  -->
             <div class="p-5 grid grid-cols-3 md:grid-cols-6 lg:grid-cols-10 gap-5 justify-start">
-                <div v-for="skill in skills" :key="skill.alt" class="p-2 flex flex-col gap-4 group">
+                <div v-for="skill in skills" :key="skill.alt" class="inset-shadow-xl p-2 flex flex-col gap-4 group">
                     <div class="cursor-box rounded-md flex items-center justify-center h-full w-full transition-transform duration-300" :class="{ 'active-glow': activeSkills.has(skill.alt) }" @click="toggleSkill(skill.alt)" :style="{'--shadow-color': skill.shadowColor}">
                         <img :src="skill.src" :alt="skill.alt" class="h-auto w-[70%] py-2"/>
                     </div>
@@ -337,7 +337,6 @@ function flipAll(state) {
     transition: all 0.3s ease;
     background: linear-gradient(145deg, #f2f2f2, #e6e6e6);
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
 .active-glow, .cursor-box:hover {

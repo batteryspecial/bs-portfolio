@@ -83,7 +83,7 @@ onUnmounted(() => {
 
 <template>
     <SpeedInsights/>
-    <div class="flex flex-col justify-center min-h-[90vh]">
+    <div class="flex flex-col mx-auto justify-center min-h-[90vh] lg:w-full w-[90%]">
         <section class="flex items-center mt-[-10rem] justify-center relative mx-auto w-full">
             <!-- Left: Text Column -->
             <div class="w-full lg:w-1/2 flex flex-col items-center">
@@ -103,13 +103,13 @@ onUnmounted(() => {
                         <!-- Introduction -->
                         <div class="flex flex-col gap-3">
                             <p class="inline">
-                            I'm a first year studying <InlineEntry :logo="waterloologo" color="yellow" href="https://uwaterloo.ca/future-students/programs/software-engineering">Software Engineering</InlineEntry> at the University of Waterloo. I'm an engineer, but also a visionary and advocate.
+                            I'm a first year studying <InlineEntry :logo="waterloologo" color="yellow" href="https://uwaterloo.ca/future-students/programs/software-engineering">Software Engineering</InlineEntry> at the University of Waterloo. I'm an engineer, but an explorer at heart.
                             </p>
                             <p>
                                 I'm currently developing the Ground Station for <InlineEntry :logo="orbitalogo" color="blue" href="https://www.uworbital.com/">Orbital</InlineEntry> and working on EngHacks with <InlineEntry :logo="engsoclogo" color="purple" href="https://www.engsoc.uwaterloo.ca/">Waterloo Engineering Society</InlineEntry>!
                             </p>
                             <p>
-                                There's a lot more I'm doing... they'll show up here after I'm done.
+                                There's a lot more I'm doing. They'll show up here (or on LinkedIn) if I'm done.
                             </p>
                         </div>
                         <!-- Social Media Links -->

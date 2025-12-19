@@ -19,7 +19,7 @@ const emit = defineEmits(['flip']);
                 <div class="p-4 flex-1 flex flex-col">
                     <div class="text-2xl mb-3">{{ project.title }}</div>
                     <div class="flex flex-wrap gap-2 mb-2">
-                        <span v-for="(skill, idx) in project.skills" :key="idx" class="bg-[#93c4c6] text-xs font-semibold px-3 py-1 rounded-full">{{ skill }}</span>
+                        <span v-for="(skill, idx) in project.skills" :key="idx" class="bg-[#93c4c6] text-xs font-semibold px-3 py-1 rounded-full text-select-none hover:shadow-md hover:shadow-teal-500/70 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">{{ skill }}</span>
                     </div>
                 </div>
                 <div class="w-full h-[1px] bg-[#93c4c6]"></div>
@@ -29,7 +29,7 @@ const emit = defineEmits(['flip']);
             </div>
             <!-- Back -->
             <div class="absolute inset-0  backface-hidden overflow-auto flex flex-col" :style="{ transform: 'rotateY(180deg)'}">
-                <div class="p-[2rem] flex-1 flex text-justify justify-center">
+                <div class="p-[2rem] flex-1 flex lg:text-justify justify-center">
                     <span class="text-select-none text-md">{{ project.description }}</span>
                 </div>
             </div>
