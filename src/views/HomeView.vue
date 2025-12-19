@@ -90,7 +90,7 @@ onUnmounted(() => {
                 <div class="px-5 lg:px-20">
                     <div class="relative flex items-center gap-6">
                         <div class="relative group w-auto">
-                            <img src="/src/assets/battery.jpg" alt="Profile" class="w-32 h-32 object-cover rounded-full transition duration-300 polaroid"/>
+                            <img src="/src/assets/battery.jpg" alt="Profile" class="w-32 h-32 object-cover backdrop-brightness-0 rounded-full transition duration-300 polaroid"/>
                             <span class="absolute -bottom-1 -right-1 text-4xl shake-hover">👋</span>
                         </div>
                         <div>

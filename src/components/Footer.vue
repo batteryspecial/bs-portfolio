@@ -27,7 +27,6 @@ const socialIcons = [
                     <nav class="flex gap-8 text-lg font-medium">
                         <router-link to="/" class="footer-link">Home</router-link>
                         <router-link to="/projects" class="footer-link">Projects</router-link>
-                        <router-link to="/contact" class="footer-link">Contact</router-link>
                     </nav>
 
                     <!-- Socials -->
