@@ -240,7 +240,7 @@ const ProjectList = ref([
         image: CampusYapCover,
         title: 'CampusYap',
         demo: '#',
-        repo: 'https://git.uwaterloo.ca/se101-fall2025/projects/project_team_23/-/tree/main',
+        repo: 'https://github.com/aicheye/project_team_23',
         skills: ['Android Studios', 'Flask', 'MySQL'],
         description: 'A location-aware anonymous discussion Android app for University of Waterloo and Wilfrid Laurier students. The app enables verified campus members to post, reply, and react anonymously to short text-based messages within a defined geographic radius. Posts will only be visible to users in the same verified region.',
     },
