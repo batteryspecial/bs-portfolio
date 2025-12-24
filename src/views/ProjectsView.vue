@@ -210,7 +210,7 @@ const timelineEntries = ref([
 ]);
 
 import SkylineSurvivalCover from '../assets/projects/skylinesurvival.png'
-import CampusYapCover from '../assets/projects/personalweb.png'
+import CampusYapCover from '../assets/projects/campusyap.png'
 import ChinookCuriosityCentralCover from '../assets/projects/chinookcuriosity.png'
 import BlockedManCover from '../assets/projects/blockedman.png'
 import ConnectFourCover from '../assets/projects/connect4.png'

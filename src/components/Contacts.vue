@@ -1,3 +1,11 @@
+<script setup>
+const props = defineProps({
+    src: String,
+    alt: String,
+    href: String,
+});
+</script>
+
 <template>
     <a :href="href" target="_blank" class="group relative flex flex-col items-center justify-center p-4 bg-white text-white rounded-full w-10 h-10 duration-200 overflow-hidden">
         <div class="absolute transition-all duration-300 ease-in-out group-hover:translate-y-full group-hover:opacity-0">
@@ -10,16 +18,6 @@
         </div>
     </a>
 </template>
-
-<script setup>
-import { defineProps } from 'vue';
-
-const props = defineProps({
-    src: String,
-    alt: String,
-    href: String,
-});
-</script>
 
 <style scoped>
 .inversion {

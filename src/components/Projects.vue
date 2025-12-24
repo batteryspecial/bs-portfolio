@@ -1,6 +1,4 @@
 <script setup>
-import { defineProps } from 'vue';
-
 const props = defineProps({
     project: Object,
     index: Number,
@@ -14,7 +12,7 @@ const emit = defineEmits(['flip']);
         <div class="absolute inset-0 transition-transform duration-500 preserve-3d rounded-xl shadow-md hover:shadow-xl border border-[#93c4c6]" :style="{ transform: `rotateY(${rotation}deg)`}">
             <!-- Front -->
             <div class="absolute inset-0  backface-hidden transition-all duration-500 overflow-hidden flex flex-col">
-                <div class="h-full w-full bg-cover bg-center rounded-t-xl" :style="`background-image: url(${project.image})`"></div>
+                <div class="h-full w-full bg-cover bg-top-left bg-no-repeat rounded-t-xl" :style="`background-image: url(${project.image})`"></div>
                 <div class="w-full h-[1px] bg-[#93c4c6]"></div>
                 <div class="p-4 flex-1 flex flex-col">
                     <div class="text-2xl mb-3">{{ project.title }}</div>
