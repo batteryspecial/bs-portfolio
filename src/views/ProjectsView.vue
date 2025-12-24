@@ -1,7 +1,7 @@
 <script setup>
 import { h, ref } from 'vue'
 import InlineEntry from '../components/Inline.vue'
-import TimelineEntry from '../components/Timeline.vue'
+import TimelineEntry from '../sections/Timeline.vue'
 import ProjectsEntry from '../components/Projects.vue'
 
 const activeSkills = ref(new Set())

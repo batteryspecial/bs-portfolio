@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, nextTick } from 'vue'
-import Navbar from './components/Navbar.vue'
-import Footer from './components/Footer.vue'
+import Navbar from './sections/Navbar.vue'
+import Footer from './sections/Footer.vue'
 
 const updateHeight = () => {
     const placeholder = document.querySelector('.placeholder')
