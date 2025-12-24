@@ -42,13 +42,20 @@ const socialIcons = [
                     </div>
                 </div>
 
-                <div class="flex flex-col justify-between text-sm items-center md:items-start">
-                    <!-- Webring -->
+                <div class="flex flex-col gap-y-4 text-sm items-center md:items-start">
+                    <!-- SE Webring -->
                     <a href="https://se-webring.xyz/" target="_blank" class="flex items-center gap-3 opacity-80 hover:opacity-100 transition">
                         <img src="/src/assets/icons/webring.svg" class="h-8 invert" />
                         <span>University of Waterloo Software Engineering Webring</span>
                     </a>
-
+                    <!-- SE'30 Webring -->
+                    <div class="inversion" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+                        <a href="https://se30webring.com?from=https://batteryspecial.vercel.app&dir=prev" style="text-decoration: none; color: black; font-size: 1.5rem; line-height: 1; display: flex; align-items: center;">←</a>
+                        <a href="https://se30webring.com" target="_blank" style="text-decoration: none; display: flex; align-items: center;">
+                            <img src="https://se30webring.com/assets/icon.svg" alt="SE'30 Webring" style="width: 32px; height: 32px;" />
+                        </a>
+                        <a href="https://se30webring.com?from=https://batteryspecial.vercel.app&dir=next" style="text-decoration: none; color: black; font-size: 1.5rem; line-height: 1; display: flex; align-items: center;">→</a>
+                    </div>
                     
                 </div>
             </div>
