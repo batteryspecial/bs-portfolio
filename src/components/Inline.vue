@@ -22,8 +22,8 @@ const bgClass = computed(() => {
 </script>
 
 <template>
-    <a :href="href" class="inline-link relative inline-flex items-center transition duration-300 gap-0.5 px-1" :class="bgClass" :data-hover-color="color" target="_blank" rel="noopener">
-        <img class="mr-1 h-3 w-auto duration-200" :src="logo" alt=""/>
+    <a :href="href" class="inline-link inline transition duration-300" :class="bgClass" :data-hover-color="color" target="_blank" rel="noopener">
+		<img v-if="logo" class="inline-block align-[-0.2ex] mr-1 h-[1em] w-auto " :src="logo" alt="logo"/>
         <span class="z-40 text-white text-opacity-100">
             <slot>{{ content }}</slot>
         </span>

@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { SpeedInsights } from '@vercel/speed-insights/vue';
 
 import ContactEntry from '../components/Contacts.vue';
 import InlineEntry from '../components/Inline.vue';
@@ -10,9 +9,10 @@ import githubicon from '../assets/icons/github.svg';
 import youtubeicon from '../assets/icons/youtube.svg';
 import instagramicon from '../assets/icons/instagram.svg';
 
-import waterloologo from '../assets/logos/uwaterloo.png';
-import orbitalogo from '../assets/logos/uworbital.png'
-import engsoclogo from '../assets/logos/engsoc.png'
+import waterloologo from '@/assets/logos/uwaterloo.png';
+import orbitalogo from '@/assets/logos/uworbital.png'
+import engsoclogo from '@/assets/logos/engsoc.png'
+import statsyuklogo from '@/assets/logos/statsyuk.svg'
 
 const contactinfo = [
     { src: linkedinicon, alt: 'LinkedIn', href: 'https://www.linkedin.com/in/qinkai-li-40198b31a/' },
@@ -21,80 +21,46 @@ const contactinfo = [
     { src: instagramicon, alt: 'Instagram', href: 'https://www.instagram.com/qlil_0112/' },
 ];
 
+// Slides the fixed social links up so they never overlap the revealed footer
 const socialLinksOffset = ref(0);
 const updateSocialLinksPosition = () => {
-    // Get DOM elements first since #app is mounted onto a dev
-    const appElement = document.querySelector('#app');
-    const placeholder = document.querySelector('.placeholder');
+    const footer = document.querySelector('footer');
+    if (!footer) return;
 
-    // Early return if either some element doesn't exist
-    // Defensive programming measure
-
-    if (!appElement || !placeholder) return;
-
-    const viewportHeight = window.innerHeight;
-    const scrollPosition = appElement.scrollTop;
-    const documentHeight = appElement.scrollHeight;
-    
-    // Use the placeholder to our advantage
-    // Get relative position
-    const placeholderRect = placeholder.getBoundingClientRect();
-
-    // Calculate how much of the placeholder is in the viewport
-    const visibleAmount = Math.max(0, 
-        Math.min(
-            placeholder.offsetHeight, // max possible
-            viewportHeight - placeholderRect.top - 10 // actual visible amount
-        )
+    // The sticky footer is revealed by the last `footer.offsetHeight` pixels of
+    // document scroll, so the revealed amount is its height minus the distance
+    // left to the bottom of the page.
+    const distanceToBottom = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+    socialLinksOffset.value = Math.max(0,
+        Math.min(footer.offsetHeight, footer.offsetHeight - distanceToBottom - 10)
     );
-
-    // Debugging, check in console to see things change real-time
-    // use :style = { transform: `translateY(${...offset..})px`} to apply smooth css translation
-    console.log({
-        viewportHeight,
-        scrollPosition,
-        documentHeight,
-        placeholderRect,
-    });
-    console.log('Visible footer:', visibleAmount);
-    console.log('Will translate by:', -visibleAmount + 'px');
-
-    socialLinksOffset.value = visibleAmount;
 }
 
 onMounted(() => {
-    const appElement = document.querySelector('#app');
-    if (appElement) {
-        appElement.addEventListener('scroll', updateSocialLinksPosition);
-        window.addEventListener('resize', updateSocialLinksPosition);
-        updateSocialLinksPosition();
-    }
-    
+    window.addEventListener('scroll', updateSocialLinksPosition, { passive: true });
+    window.addEventListener('resize', updateSocialLinksPosition);
+    updateSocialLinksPosition();
 })
 
 onUnmounted(() => {
-    const appElement = document.querySelector('#app');
-    if (appElement) {
-        appElement.removeEventListener('scroll', updateSocialLinksPosition);
-        window.removeEventListener('resize', updateSocialLinksPosition);
-    }
+    window.removeEventListener('scroll', updateSocialLinksPosition);
+    window.removeEventListener('resize', updateSocialLinksPosition);
 })
 </script>
 
 <template>
-    <SpeedInsights/>
-    <div class="flex flex-col mx-auto justify-center min-h-[90vh] lg:w-full w-[90%]">
-        <section class="flex items-center mt-[-10rem] justify-center relative mx-auto w-full">
+    <div class="flex flex-col mx-auto justify-center flex-1 py-8 xl:w-[80%] lg:w-[90%] w-full">
+        <section class="flex items-center justify-center relative mx-auto w-full">
             <!-- Left: Text Column -->
-            <div class="w-full lg:w-1/2 flex flex-col items-center">
+            <div class="w-full xl:w-1/2 lg:w-2/3 md:w-3/4 flex flex-col items-center">
                 <div class="px-5 lg:px-20">
-                    <div class="relative flex items-center gap-6">
-                        <div class="relative group w-auto">
-                            <img src="/src/assets/battery.jpg" alt="Profile" class="w-32 h-32 object-cover backdrop-brightness-0 rounded-full transition duration-300 polaroid"/>
+                    <div class="relative flex items-center gap-4 sm:gap-6">
+                        <div class="relative group w-auto shrink-0">
+                            <img src="/src/assets/battery.jpg" alt="Profile" class="w-24 h-24 sm:w-32 sm:h-32 object-cover backdrop-brightness-0 rounded-full transition duration-300 polaroid"/>
                             <span class="absolute -bottom-1 -right-1 text-4xl shake-hover">👋</span>
                         </div>
-                        <div>
-                            <h1 class="2xl:text-5xl md:text-5xl text-5xl font-normal mb-2">Qinkai Li</h1>
+                        <div class="min-w-0">
+                            <h1 class="text-4xl sm:text-5xl font-normal mb-2">Qinkai Li</h1>
                             <h3 class="text-xl font-normal">"battery special"</h3>
                         </div>
                     </div>
@@ -103,13 +69,13 @@ onUnmounted(() => {
                         <!-- Introduction -->
                         <div class="flex flex-col gap-3">
                             <p class="inline">
-                            I'm a first year studying <InlineEntry :logo="waterloologo" color="yellow" href="https://uwaterloo.ca/future-students/programs/software-engineering">Software Engineering</InlineEntry> at the University of Waterloo. I'm an engineer, but an explorer at heart.
+                            I just finished first year studying <InlineEntry :logo="waterloologo" color="yellow" href="https://uwaterloo.ca/future-students/programs/software-engineering">Software Engineering</InlineEntry> at the University of Waterloo. I'm an engineer, but a scientist and explorer at heart.
                             </p>
                             <p>
-                                I'm currently developing the Ground Station for <InlineEntry :logo="orbitalogo" color="blue" href="https://www.uworbital.com/">Orbital</InlineEntry> and working on EngHacks with <InlineEntry :logo="engsoclogo" color="purple" href="https://www.engsoc.uwaterloo.ca/">Waterloo Engineering Society</InlineEntry>!
+                                In year 1, I developed the Ground Station for <InlineEntry :logo="orbitalogo" color="blue" href="https://www.uworbital.com/">Orbital</InlineEntry> and worked on EngHacks with <InlineEntry :logo="engsoclogo" color="purple" href="https://www.engsoc.uwaterloo.ca/">Waterloo Engineering Society</InlineEntry>!
                             </p>
                             <p>
-                                There's a lot more I'm doing. They'll show up here (or on LinkedIn) if I'm done.
+                                Currently a full stack engineer at <InlineEntry :logo="statsyuklogo" color="black" href="https://statsyuk.ca">Statsyuk Analytics</InlineEntry>, working on backend and security infrastructure.
                             </p>
                         </div>
                         <!-- Social Media Links -->
@@ -117,7 +83,7 @@ onUnmounted(() => {
                             <ContactEntry v-for="link in contactinfo" :key="link.href" :src="link.src" :alt="link.alt" :href="link.href"/>
                         </div>
                     </div>
-                </div>  
+                </div>
             </div>
         </section>
     </div>

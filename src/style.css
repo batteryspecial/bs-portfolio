@@ -5,23 +5,21 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+/*
+ * The document is the scroll container. Do NOT trap scrolling inside #app:
+ * the parallax footer relies on normal document flow, and an inner scroller
+ * breaks wheel/touch scrolling whenever the pointer is over the footer.
+ */
+html {
     background-color: black;
-    height: 100%;
     margin: 0;
-    overflow: hidden;
+    overscroll-behavior-y: none;
+    /* Hide scrollbar while keeping the page scrollable */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 html::-webkit-scrollbar {
-  display: none;
-}
-#app {
-    height: 100%;
-    overflow-y: auto;
-    overscroll-behavior: none;
-    position: fixed;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch; /* keeps momentum scrolling */
+    display: none;
 }
 
 :root {
@@ -103,6 +101,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: black;
 }
 
 h1 {
@@ -128,16 +127,15 @@ button:focus-visible {
   width: 100%;
   min-height: 100vh;
   margin: 0;
-  padding: 0
+  padding: 0;
 }
+
+/*** Route Transitions ***/
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.5s ease;
 }
 .fade-enter-from, .fade-leave-to {
   opacity: 0;
-}
-.fade-enter-to, .fade-leave-from {
-  opacity: 1;
 }
 
 @media (prefers-color-scheme: light) {

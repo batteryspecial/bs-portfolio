@@ -1,56 +1,28 @@
 <script setup>
-import { onMounted, nextTick } from 'vue'
+import { SpeedInsights } from '@vercel/speed-insights/vue'
 import Navbar from './sections/Navbar.vue'
 import Footer from './sections/Footer.vue'
-
-const updateHeight = () => {
-    const placeholder = document.querySelector('.placeholder')
-    const footer = document.querySelector('.footer')
-
-    if (footer && placeholder) {
-        // Use computed style
-        const computedHeight = getComputedStyle(footer).height;
-        placeholder.style.height = computedHeight;
-    }
-}
-
-onMounted(async() => {
-    await nextTick()
-    updateHeight()
-
-    window.addEventListener('resize', updateHeight);
-    window.addEventListener('load', updateHeight);
-})
 </script>
 
 <template>
-    <!-- Static background wrapper -->
-    <div class="bg-[url(/src/assets/background.jpg)] bg-cover bg-fixed text-white relative z-10">
+    <SpeedInsights/>
+    <!--
+        Parallax footer reveal, CSS-only:
+        - This wrapper is at least one viewport tall and paints above the footer (z-10).
+          Its bg-fixed background stays put while the page scrolls, and is clipped to
+          the wrapper, so the footer underneath stays hidden until the content ends.
+        - The footer below is `sticky bottom-0` in normal document flow: it pins to the
+          bottom of the viewport and gets revealed as the content scrolls past it.
+        Because everything scrolls with the document (no inner scroll container, no
+        position:fixed), wheel and touch scrolling keep working over the footer.
+    -->
+    <div class="relative z-10 flex min-h-svh flex-col bg-[url(/src/assets/background.jpg)] bg-cover bg-fixed text-white">
         <Navbar/>
-        <transition name="fade" mode="out-in" @before-enter="handleBeforeEnter" @after-enter="handleAfterEnter">
         <RouterView v-slot="{ Component }">
-            <component :is="Component" />
+            <transition name="fade" mode="out-in">
+                <component :is="Component" />
+            </transition>
         </RouterView>
-        </transition>
     </div>
-    <div class="placeholder"></div>
-    <Footer class="footer"/>
+    <Footer class="sticky bottom-0 z-0"/>
 </template>
-
-<style scoped>
-.footer {
-    position: fixed;
-    z-index: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.5s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-}
-</style>
