@@ -16,8 +16,8 @@ import statsyuklogo from '@/assets/logos/statsyuk.svg'
 
 const contactinfo = [
     { src: linkedinicon, alt: 'LinkedIn', href: 'https://www.linkedin.com/in/qinkai-li-40198b31a/' },
-    { src: githubicon, alt: 'GitHub', href: 'https://github.com/manfromthefog' },
-    { src: youtubeicon, alt: 'YouTube', href: 'https://www.youtube.com/@thepropertytheygiveyou' },
+    { src: githubicon, alt: 'GitHub', href: 'https://github.com/batteryspecial' },
+    { src: youtubeicon, alt: 'YouTube', href: 'https://www.youtube.com/@batteryspecial' },
     { src: instagramicon, alt: 'Instagram', href: 'https://www.instagram.com/qlil_0112/' },
 ];
 
