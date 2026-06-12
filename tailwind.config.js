@@ -14,5 +14,3 @@ export default {
     },
     plugins: [],
 }
-
-export const darkMode = 'class'; // Enable
