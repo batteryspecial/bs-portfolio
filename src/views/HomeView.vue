@@ -49,7 +49,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="flex flex-col mx-auto justify-center flex-1 py-8 xl:w-[80%] lg:w-[90%] w-full">
+    <div class="flex flex-col mx-auto justify-center flex-1 py-8 xl:w-[85%] lg:w-[90%] w-full">
         <section class="flex items-center justify-center relative mx-auto w-full">
             <!-- Left: Text Column -->
             <div class="w-full xl:w-1/2 lg:w-2/3 md:w-3/4 flex flex-col items-center">

@@ -1,15 +1,15 @@
 <script setup>
-import { h, ref } from 'vue'
+import { h, ref, reactive } from 'vue'
 import InlineEntry from '@/components/Inline.vue'
 import TimelineEntry from '@/sections/Timeline.vue'
 import ProjectsEntry from '@/components/Projects.vue'
 
-const activeSkills = ref(new Set())
+const activeSkills = reactive(new Set())
 function toggleSkill(skillAlt) {
-    if (activeSkills.value.has(skillAlt)) {
-        activeSkills.value.delete(skillAlt)
+    if (activeSkills.has(skillAlt)) {
+        activeSkills.delete(skillAlt)
     } else {
-        activeSkills.value.add(skillAlt)
+        activeSkills.add(skillAlt)
     }
 }
 
@@ -306,13 +306,17 @@ function flipAll(state) {
         <!-- Skill Tags (below ProjectsEntry) -->
         <section class="border outline-5 rounded-xl bg-slate-400 bg-opacity-50 mb-24">
             <h1 class="p-4 text-3xl font-normal border-b-2">Development Tools</h1>
-            <!--  -->
-            <div class="p-5 grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-5 justify-start">
-                <div v-for="skill in skills" :key="skill.alt" class="inset-shadow-xl p-2 flex flex-col gap-4 group">
-                    <div class="cursor-box rounded-md flex items-center justify-center h-full w-full transition-transform duration-300" :class="{ 'active-glow': activeSkills.has(skill.alt) }" @click="toggleSkill(skill.alt)" :style="{'--shadow-color': skill.shadowColor}">
-                        <img :src="skill.src" :alt="skill.alt" class="h-auto w-[70%] py-2"/>
+            <div class="p-5 grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-5 justify-items-center">
+                <div v-for="skill in skills" :key="skill.alt" class="inset-shadow-xl p-2 flex flex-col gap-2 group items-center">
+                    <div 
+                        @click="toggleSkill(skill.alt)" 
+                        class="cursor-box rounded-md flex items-center justify-center w-10 aspect-square transition-transform duration-300" 
+                        :class="{ 'active-glow': activeSkills.has(skill.alt) }"
+                        :style="{ '--shadow-color': skill.shadowColor }"
+                    >
+                        <img :src="skill.src" :alt="skill.alt" class="size-[70%] object-contain"/>
                     </div>
-                    <p class="text-sm text-center font-medium">{{ skill.alt }}</p>
+                    <p class="sm:text-sm text-xs text-center font-medium w-full truncate">{{ skill.alt }}</p>
                 </div>
             </div>
         </section>
@@ -341,7 +345,7 @@ function flipAll(state) {
     overflow: hidden;
 }
 
-.active-glow, .cursor-box:hover {
+.active-glow {
     transform: scale(1.05);
     box-shadow:
         0 0 10px rgb(231, 231, 231),
@@ -360,7 +364,8 @@ function flipAll(state) {
     transition: transform 0.5s ease;
 }
 
-.cursor-box:hover::before {
+.cursor-box:not(.active-glow):hover::before {
     transform: translateX(100%);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--shadow-color) 40%, transparent);
 }
 </style>
