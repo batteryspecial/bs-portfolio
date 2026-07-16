@@ -11,7 +11,7 @@ const socialIcons = [
     { href: 'https://www.linkedin.com/in/qinkai-li-40198b31a/', src: linkedinIcon, alt: 'linkedin' },
     { href: 'https://github.com/batteryspecial', src: githubIcon, alt: 'GitHub' },
     { href: 'https://www.youtube.com/@batteryspecial', src: youtubeIcon, alt: 'youtube' },
-    { href: 'https://www.instagram.com/qlil_0112/', src: instagramIcon, alt: 'instagram' },
+    { href: 'https://www.instagram.com/batteryspecial_/', src: instagramIcon, alt: 'instagram' },
 ]
 </script>
 

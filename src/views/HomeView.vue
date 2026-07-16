@@ -18,7 +18,7 @@ const contactinfo = [
     { src: linkedinicon, alt: 'LinkedIn', href: 'https://www.linkedin.com/in/qinkai-li-40198b31a/' },
     { src: githubicon, alt: 'GitHub', href: 'https://github.com/batteryspecial' },
     { src: youtubeicon, alt: 'YouTube', href: 'https://www.youtube.com/@batteryspecial' },
-    { src: instagramicon, alt: 'Instagram', href: 'https://www.instagram.com/qlil_0112/' },
+    { src: instagramicon, alt: 'Instagram', href: 'https://www.instagram.com/batteryspecial_/' },
 ];
 
 // Slides the fixed social links up so they never overlap the revealed footer
@@ -61,7 +61,7 @@ onUnmounted(() => {
                         </div>
                         <div class="min-w-0">
                             <h1 class="text-4xl sm:text-5xl font-normal mb-2">Qinkai Li</h1>
-                            <h3 class="text-xl font-normal">"battery special"</h3>
+                            <h3 class="text-xl font-normal">batteryspecial</h3>
                         </div>
                     </div>
                     <div class="w-full h-[1px] bg-gray-300 mt-[1.5rem] mb-4"></div>
