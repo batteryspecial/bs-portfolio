@@ -1,37 +1,67 @@
-<script setup>
-import { ref } from 'vue';
-const props = defineProps({
-    timeline: Object,
-});
-const isAccordionOpen = ref(false);
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref, RendererElement, RendererNode, VNode } from 'vue';
+import Modal from '@/components/Modal.vue';
+import ImageGallery from '@/components/ImageGallery.vue';
+
+export type ImageMetadata = {
+    image: string;
+    caption: string;
+}
+
+type TimelineEntry = {
+    time: string;
+    event: string;
+    description: () => VNode<
+        RendererNode, 
+        RendererElement, 
+        { [key: string]: any }
+    >;
+    images: ImageMetadata[];
+};
+
+const props = defineProps<{ timeline: TimelineEntry }>();
+const modalOpen = ref<boolean>(false);
+const selectedImageIndex = ref<number>(0);
+
+const openGallery = (index: number) => {
+    selectedImageIndex.value = index;
+    modalOpen.value = true;
+}
+
+const closeGallery = () => {
+    modalOpen.value = false;
+}
+
+function handleKeyDown(event: KeyboardEvent) {
+    if (event.key === "Escape") closeGallery();
+}
+onMounted(() => {
+    window.addEventListener('keydown', handleKeyDown)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('keydown', handleKeyDown)
+})
 </script>
 
 <template>
-  <div class="flex items-start w-full mb-3 relative opacity-0 transform translate-y-10 animate-fade-in-up">
-    <!-- Vertical Line -->
-    <div class="w-1 bg-black h-[200%] absolute left-3.5 top-0 z-0"></div>
-    <!-- Dot -->
-    <div class="w-3 h-3 bg-black rounded-full absolute left-2.5 top-0 z-10"></div>
-
-    <div class="ml-10 flex flex-col w-full">
-      <!-- Top: Time and Event -->
-        <button class="flex flex-col items-start accordion" @click="isAccordionOpen = !isAccordionOpen" :aria-expanded="isAccordionOpen">
-            <div>
-                <span class="absolute text-2xl font-bold -translate-y-2.5 -translate-x-12 transition-all duration-300"
-                :class="isAccordionOpen ? 'rotate-180 text-gray-800' : 'text-gray-950'">
-                {{ isAccordionOpen ? '–' : '+' }}
-            </span>
-                <p class="relative inline-block px-2 py-1 mb-3 -translate-y-2 font-semibold text-white bg-stone-900 dark:bg-white dark:text-stone-900 rounded-md">
-                {{ timeline.time }}
-                </p>
-                
+    <div class="group relative flex w-full gap-6 pb-12 transition-all duration-300">
+        <div class="relative flex flex-col items-center">
+            <div class="z-10 h-3 w-3 rounded-full bg-white/80 ring-4 ring-white/10 transition-all duration-300 group-hover:bg-white group-hover:ring-white/30 group-hover:shadow-[0_0_12px_rgba(255,255,255,0.8)]"></div>
+            <div class="h-full w-[2px] bg-gradient-to-b from-white/30 via-white/10 to-transparent"></div>
+        </div>
+        <div class="flex flex-1 flex-col gap-4 -mt-1.5">
+            <div class="flex flex-col items-start gap-2">
+                <span class="inline-flex items-center rounded-md border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur-md transition-all duration-300 group-hover:border-white/20 group-hover:bg-white/10 group-hover:text-white">
+                    {{ timeline.time }}
+                </span>
+                <h2 class="text-2xl font-bold tracking-tight text-white/90 transition-colors duration-300 group-hover:text-white">
+                    {{ timeline.event }}
+                </h2>
             </div>
-            <h2 class="text-2xl font-semibold -translate-y-2.5">{{ timeline.event }}</h2>
-        </button>
-        <transition name="accordion-panel">
-            <!-- Bottom: Description and Images -->
-            <div class="flex flex-col md:flex-row w-full gap-4 panel" :style="{ maxHeight: isAccordionOpen ? '400px' : '0' }">
-                <div class="flex-1 text-gray-900 text-justify text-lg">
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div class="lg:col-span-6 text-base leading-relaxed text-white/70">
                     <slot name="description">
                         <span v-if="typeof timeline.description === 'function'">
                             <component :is="timeline.description" />
@@ -41,58 +71,32 @@ const isAccordionOpen = ref(false);
                         </span>
                     </slot>
                 </div>
-                <div class="flex-1 flex flex-wrap justify-center items-center gap-4">
-                <img
-                    v-for="(image, index) in timeline.images"
-                    :key="index"
-                    :src="image"
-                    alt="Timeline Image"
-                    class="w-32 h-32 object-cover rounded-md shadow-lg polaroid"
-                    @load="e => e.target.classList.add('loaded')"/>
+
+                <div v-if="timeline.images && timeline.images.length" class="lg:col-span-6 flex flex-wrap gap-3">
+                    <div
+                        v-for="(i, index) in timeline.images"
+                        :key="index"
+                        class="group/img relative overflow-hidden rounded-lg border border-white/10 bg-white/5 p-1 hover:border-white/30 hover:shadow-lg"
+                    >
+                        <img
+                            :src="i.image"
+                            alt="Timeline detail preview"
+                            class="h-24 w-24 object-cover rounded-md transition-transform duration-500 group-hover/img:scale-105"
+                            @click="openGallery(index)"
+                        />
+                    </div>
                 </div>
             </div>
-        </transition>
+        </div>
+        <Modal :is-open="modalOpen" @close="closeGallery">
+            <ImageGallery
+                :images="timeline.images"
+                :initial-index="selectedImageIndex"
+            />
+        </Modal>
     </div>
-  </div>
 </template>
 
 <style scoped>
-/* Define the keyframes for the fade-in-up animation */
-@keyframes fade-in-up {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-/* Apply the animation */
-.animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
-}
-.accordion {
-    background: transparent;
-    border: none;
-    outline: none;
-}
-.panel {
-    overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
-}
-
-.accordion-panel-enter-active,
-.accordion-panel-leave-active {
-  transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
-}
-.accordion-panel-enter-from,
-.accordion-panel-leave-to {
-  max-height: 0;
-}
-.accordion-panel-enter-to,
-.accordion-panel-leave-from {
-  max-height: 400px;
-}
 </style>

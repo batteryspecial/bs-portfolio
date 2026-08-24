@@ -1,64 +1,46 @@
-    <script setup>
-    import { watch, onUnmounted } from 'vue'
+<script setup>
+import { defineProps, defineEmits } from 'vue'
 
-    const props = defineProps({
-        show: Boolean,
-        title: String,
-        date: String,
-    })
-    const emit = defineEmits(['close'])
+const props = defineProps({
+    isOpen: {
+        type: Boolean,
+        default: false
+    }
+})
+const emit = defineEmits(['close'])
+const closeModal = () => {
+    emit('close')
+}
+</script>
 
-    watch(() => props.show, (val) => {
-        document.body.style.overflow = val ? 'hidden' : ''
-    })
-    onUnmounted(() => {
-        document.body.style.overflow = ''
-    })
-    </script>
-
-    <template>
-        <transition name="fade-down">
-            <div v-if="show" class="fixed inset-0 z-50 flex items-center justify-center">
-                <!-- Backdrop -->
-                <div class="fixed inset-0 bg-black/25 backdrop-blur-xs" @click.self="$emit('close')"></div>
-
-                <!-- Modal Container -->
-                <div class="relative backdrop-blur-xl w-[50%] h-[75%] rounded-lg shadow-lg z-10 flex flex-col">
-                    <!-- Sticky Header -->
-                    <div class="top-0 flex bg-[inherit] justify-between items-center px-6 py-4 border-b z-20">
-                        <div class="w-full">
-                            <h2 class="text-2xl font-bold leading-tight">{{ title }}</h2>
-                            <p class="text-sm text-gray-200 mt-1">{{ date }}</p>
-                        </div>
-                        <button @click="$emit('close')" class="text-xl font-bold ml-4 bg-transparent" style="outline: none;" aria-label="Close">
-                            <img src="/src/assets/icons/close.svg" alt="Close" class="w-6 h-6">
-                        </button>
-                    </div>
-
-                    <!-- Content Area -->
-                    <div class="p-6 overflow-y-auto">
-                        <slot/>
-                    </div>
+<template>
+    <Teleport to="body">
+        <Transition name="fade">
+            <div 
+                v-if="isOpen" 
+                class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
+                @click.self="closeModal"
+            >
+                <div class="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-stone-900/90 p-6 shadow-2xl backdrop-blur-xl">
+                    <button 
+                        class="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-all hover:bg-white/10 hover:text-white"
+                        @click="closeModal"
+                    >
+                        ✕
+                    </button>
+                    <slot></slot>
                 </div>
             </div>
-        </transition>
-    </template>
+        </Transition>
+    </Teleport>
+</template>
 
-    <style scoped>
-    .fade-down-enter-active {
-        animation: fadeDown 0.4s ease-out;
-    }
-    .fade-down-leave-active {
-        animation: fadeDown 0.3s ease-in reverse;
-    }
-    @keyframes fadeDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    </style>
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+    opacity: 0;
+}
+</style>

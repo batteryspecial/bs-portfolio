@@ -69,16 +69,48 @@ onUnmounted(() => {
                         <!-- Introduction -->
                         <div class="flex flex-col gap-3">
                             <p class="inline">
-                            I just finished first year studying <InlineEntry :logo="waterloologo" color="yellow" href="https://uwaterloo.ca/future-students/programs/software-engineering">Software Engineering</InlineEntry> at the University of Waterloo. I'm an engineer, but a scientist and explorer at heart.
+                                I'm a second year studying 
+                                <InlineEntry
+                                    :logo="waterloologo"
+                                    color="yellow"
+                                    href="https://uwaterloo.ca/future-students/programs/software-engineering"
+                                >
+                                    Software Engineering
+                                </InlineEntry> 
+                                at the University of Waterloo. I'm an engineer, 
+                                but a scientist and explorer at heart.
                             </p>
                             <p>
-                                In year 1, I developed the Ground Station for <InlineEntry :logo="orbitalogo" color="blue" href="https://www.uworbital.com/">Orbital</InlineEntry> and worked on EngHacks with <InlineEntry :logo="engsoclogo" color="purple" href="https://www.engsoc.uwaterloo.ca/">Waterloo Engineering Society</InlineEntry>!
+                                I worked on EngHacks with
+                                <InlineEntry
+                                    :logo="engsoclogo"
+                                    color="purple"
+                                    href="https://www.engsoc.uwaterloo.ca/"
+                                >
+                                    Waterloo Engineering Society
+                                </InlineEntry>, 
+                                and I'm an active member of the
+                                <InlineEntry
+                                    :logo="orbitalogo"
+                                    color="blue"
+                                    href="https://www.uworbital.com/"
+                                >
+                                    Orbital
+                                </InlineEntry> 
+                                ground station team.
                             </p>
                             <p>
-                                Currently a full stack engineer at <InlineEntry :logo="statsyuklogo" color="black" href="https://statsyuk.ca">Statsyuk Analytics</InlineEntry>, working on backend and security infrastructure.
+                                I just completed my first work term as a full stack engineer at
+                                <InlineEntry
+                                    :logo="statsyuklogo"
+                                    color="black"
+                                    href="https://statsyuk.ca"
+                                >
+                                    Statsyuk Analytics
+                                </InlineEntry>, specializing in backend security 
+                                and computer vision infrastructure.
                             </p>
                         </div>
-                        <!-- Social Media Links -->
                         <div class="fixed top-[35%] left-8 z-50 items-start hidden lg:flex flex-col gap-10 social-links-transform" :style="{ transform: `translateY(-${socialLinksOffset}px)` }">
                             <ContactEntry v-for="link in contactinfo" :key="link.href" :src="link.src" :alt="link.alt" :href="link.href"/>
                         </div>
