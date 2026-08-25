@@ -26,11 +26,11 @@ const timelineEntries = ref([
             },
             { 
                 image: Statsyuk2, 
-                caption: "Nearly 50% runtime saved from making introducing independent pass scheduler modes. Turns out the multipass barrier stream was not a necessity."
+                caption: "Nearly 50% runtime saved from introducing independent pass scheduler modes. Turns out the multi-pass barrier stream was not a necessity."
             },
             { 
                 image: Statsyuk3, 
-                caption: "Removing Python memory copy and serialization overhead resulted in a shocking ~10x speedup that scales inversely with foreground density." 
+                caption: "Removing Python memory copy and serialization overhead using C++ resulted in a shocking ~10x speedup that scales inversely with foreground density." 
             },
             { 
                 image: Statsyuk4, 
