@@ -38,7 +38,7 @@ const timelineEntries = ref([
             },
             { 
                 image: Statsyuk5, 
-                caption: "While we can limit the memory usage of native processes, external TensorRT dependencies required a custom CUDA memory allocation tracker and limiter." 
+                caption: "While we can limit the memory usage of native processes in NVIDIA MPS, external TensorRT engines need a custom CUDA memory tracker and limiter." 
             },
             { 
                 image: Statsyuk6,
