@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, h } from 'vue'
 
 import ContactEntry from '../components/Contacts.vue';
 import InlineEntry from '../components/Inline.vue';
@@ -21,20 +21,56 @@ const contactinfo = [
     { src: instagramicon, alt: 'Instagram', href: 'https://www.instagram.com/batteryspecial_/' },
 ];
 
-// Slides the fixed social links up so they never overlap the revealed footer
 const socialLinksOffset = ref(0);
 const updateSocialLinksPosition = () => {
     const footer = document.querySelector('footer');
     if (!footer) return;
 
-    // The sticky footer is revealed by the last `footer.offsetHeight` pixels of
-    // document scroll, so the revealed amount is its height minus the distance
-    // left to the bottom of the page.
+    // The sticky footer is revealed by the last `footer.offsetHeight` pixels
     const distanceToBottom = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
     socialLinksOffset.value = Math.max(0,
         Math.min(footer.offsetHeight, footer.offsetHeight - distanceToBottom - 10)
     );
 }
+
+const introItems = ref([{
+    id: 1,
+    content: () => h('span', [
+        "I worked on EngHacks 2025 with ", 
+        h(InlineEntry, {
+            logo: engsoclogo, 
+            color: 'purple',
+            href: 'https://www.engsoc.uwaterloo.ca/'
+        }, { default: () => 'Waterloo Engineering Society' }),"." 
+    ])
+}, {
+    id: 2,
+    content: () => h('span', [
+        "I am a major contributor to ", 
+        h(InlineEntry, {
+            logo: orbitalogo, 
+            color: 'blue',
+            href: 'https://www.uworbital.com/'
+        }, { default: () => "Orbital's" }),
+        " amateur radio station (ARO)."
+    ])
+}, {
+    id: 3,
+    content: () => h('span', [
+        "I just completed my first work term at ", 
+        h(InlineEntry, {
+            logo: statsyuklogo, 
+            color: 'black',
+            href: 'https://www.statsyuk.ca/'
+        }, { default: () => "Statsyuk Analytics" }),
+        "!"
+    ])
+}, {
+    id: 4,
+    content: () => h('span', [
+        "Currently reading more about CUDA and low-level CV principles."
+    ])
+}])
 
 onMounted(() => {
     window.addEventListener('scroll', updateSocialLinksPosition, { passive: true });
@@ -56,60 +92,39 @@ onUnmounted(() => {
                 <div class="px-5 lg:px-20">
                     <div class="relative flex items-center gap-4 sm:gap-6">
                         <div class="relative group w-auto shrink-0">
-                            <img src="/src/assets/battery.jpg" alt="Profile" class="w-24 h-24 sm:w-32 sm:h-32 object-cover backdrop-brightness-0 rounded-full transition duration-300 polaroid"/>
+                            <img
+                                src="/src/assets/profile.jpg"
+                                alt="Profile"
+                                class="w-24 h-24 sm:w-32 sm:h-32 brightness-50 object-cover rounded-full transition duration-300"
+                            />
                             <span class="absolute -bottom-1 -right-1 text-4xl shake-hover">👋</span>
                         </div>
                         <div class="min-w-0">
                             <h1 class="text-4xl sm:text-5xl font-normal mb-2">Qinkai Li</h1>
-                            <h3 class="text-xl font-normal">batteryspecial</h3>
                         </div>
                     </div>
                     <div class="w-full h-[1px] bg-gray-300 mt-[1.5rem] mb-4"></div>
                     <div class="order-2 flex flex-col items-start gap-4 text-md">
                         <!-- Introduction -->
-                        <div class="flex flex-col gap-3">
-                            <p class="inline">
+                        <div class="flex flex-col gap-3 leading-7">
+                            <p class="inline text-justify">
                                 I'm a second year studying 
                                 <InlineEntry
                                     :logo="waterloologo"
                                     color="yellow"
+                                    isInline
                                     href="https://uwaterloo.ca/future-students/programs/software-engineering"
                                 >
                                     Software Engineering
                                 </InlineEntry> 
-                                at the University of Waterloo. I'm an engineer, 
-                                but a scientist and explorer at heart.
+                                at the University of Waterloo. I'm an engineer, but a scientist and 
+                                explorer at heart. This website only documents my technical ventures.
                             </p>
-                            <p>
-                                I worked on EngHacks with
-                                <InlineEntry
-                                    :logo="engsoclogo"
-                                    color="purple"
-                                    href="https://www.engsoc.uwaterloo.ca/"
-                                >
-                                    Waterloo Engineering Society
-                                </InlineEntry>, 
-                                and I'm an active member of the
-                                <InlineEntry
-                                    :logo="orbitalogo"
-                                    color="blue"
-                                    href="https://www.uworbital.com/"
-                                >
-                                    Orbital
-                                </InlineEntry> 
-                                ground station team.
-                            </p>
-                            <p>
-                                I just completed my first work term as a full stack engineer at
-                                <InlineEntry
-                                    :logo="statsyuklogo"
-                                    color="black"
-                                    href="https://statsyuk.ca"
-                                >
-                                    Statsyuk Analytics
-                                </InlineEntry>, specializing in backend security 
-                                and computer vision infrastructure.
-                            </p>
+                            <ul class="list-disc dashed-list">
+                                <li v-for="item in introItems" :key="item.id">
+                                    <component :is="item.content" />
+                                </li>
+                            </ul>
                         </div>
                         <div class="fixed top-[35%] left-8 z-50 items-start hidden lg:flex flex-col gap-10 social-links-transform" :style="{ transform: `translateY(-${socialLinksOffset}px)` }">
                             <ContactEntry v-for="link in contactinfo" :key="link.href" :src="link.src" :alt="link.alt" :href="link.href"/>
@@ -131,12 +146,10 @@ onUnmounted(() => {
 .social-links-transform {
     transition: transform 0.8s cubic-bezier(0.01, 0.01, 0.01, 1);
 }
-
 .shake-hover {
     display: inline-block;
     transition: transform 0.3s ease-in-out;
 }
-
 .group:hover .shake-hover {
     animation: shake 0.5s ease-in-out 2;
 }

@@ -123,6 +123,19 @@ button:focus-visible {
   padding: 2em;
 }
 
+.dashed-list {
+    list-style-type: none;
+    padding-left: 1.5rem;
+}
+.dashed-list li {
+    position: relative;
+}
+.dashed-list li::before {
+    content: "— ";
+    display: inline-block;
+    width: 1.5rem;
+}
+
 #app {
   width: 100%;
   min-height: 100vh;

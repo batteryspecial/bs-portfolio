@@ -8,13 +8,13 @@ const emit = defineEmits(['flip']);
 </script>
 
 <template>
-    <div class="relative w-full h-[450px] perspective" @click="emit('flip', index)">
+    <div class="perspective relative w-full h-[450px]" @click="emit('flip', index)">
         <div 
-            class="absolute inset-0 transition-transform duration-500 preserve-3d rounded-xl shadow-xl hover:shadow-2xl"
+            class="card-inner absolute inset-0 transition-transform duration-500 rounded-xl shadow-xl hover:shadow-2xl"
             :style="{ transform: `rotateY(${rotation}deg)`}"
         >    
             <!-- Front (Dark Glass Tint) -->
-            <div class="absolute inset-0 backface-hidden transition-all duration-500 overflow-hidden flex flex-col bg-white/10 border border-white/10 rounded-xl">
+            <div class="card-front backface-hidden overflow-hidden flex flex-col bg-white/10 border border-white/10 rounded-xl">
                 <div
                     class="h-full w-full bg-cover bg-center bg-no-repeat rounded-t-xl hover:grayscale-0 grayscale transition-all duration-300"
                     :style="`background-image: url(${project.image})`"
@@ -27,7 +27,7 @@ const emit = defineEmits(['flip']);
                         <span
                             v-for="(skill, idx) in project.skills"
                             :key="idx"
-                            class="bg-white/20 text-xs font-semibold px-3 py-1 rounded-full text-white text-select-none hover:shadow-md hover:shadow-black/30 hover:-translate-y-0.5 transition-all duration-300"
+                            class="bg-white/20 text-xs font-semibold px-3 py-1 rounded-full text-white select-none hover:shadow-md hover:shadow-black/30 hover:-translate-y-0.5 transition-all duration-300"
                             @click.stop
                         >
                             {{ skill }}
@@ -39,7 +39,7 @@ const emit = defineEmits(['flip']);
                         v-if="project.repo"
                         :href="project.repo"
                         target="_blank"
-                        class="text-white/80 hover:text-white transition-colors duration-300 relative link-underline"
+                        class="text-white/80 hover:text-white transition-colors duration-300 relative after:content-[''] after:absolute after:left-0 after:-bottom-[2px] after:w-0 after:h-[2px] after:opacity-75 after:bg-[whitesmoke] after:transition-all after:duration-300 hover:after:w-full"
                         @click.stop
                     >
                         Repo ↗
@@ -48,9 +48,9 @@ const emit = defineEmits(['flip']);
             </div>
 
             <!-- Back (Light Glass Tint) -->
-            <div class="absolute inset-0 backface-hidden overflow-auto flex flex-col bg-white/10 border border-white/20 rounded-xl" :style="{ transform: 'rotateY(180deg)'}">
+            <div class="card-back backface-hidden overflow-auto flex flex-col bg-white/10 border border-white/20 rounded-xl">
                 <div class="p-[2rem] flex-1 flex lg:text-justify justify-center">
-                    <span class="text-select-none text-md text-white">{{ project.description }}</span>
+                    <span class="select-none text-md text-white">{{ project.description }}</span>
                 </div>
             </div>
 
@@ -58,31 +58,30 @@ const emit = defineEmits(['flip']);
     </div>
 </template>
 
-
 <style scoped>
-.perspective { perspective: 1000px; }
-.preserve-3d { transform-style: preserve-3d; }
-.backface-hidden { backface-visibility: hidden; }
+.perspective {
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+}
 
-.link-underline::after {
-    content: '';
+.card-inner {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+.card-front, .card-back {
     position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    opacity: 75%;
-    background: whitesmoke;
-    transition: all 0.3s ease;
-}
-
-.link-underline:hover::after {
+    inset: 0;
     width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
-
-.text-select-none {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+.card-front {
+    transform: rotateY(0deg) translateZ(1px);
+    -webkit-transform: rotateY(0deg) translateZ(1px);
+}
+.card-back {
+    transform: rotateY(180deg) translateZ(1px);
+    -webkit-transform: rotateY(180deg) translateZ(1px);
 }
 </style>

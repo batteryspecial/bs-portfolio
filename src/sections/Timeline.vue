@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, RendererElement, RendererNode, VNode } from 'vue';
-import Modal from '@/components/Modal.vue';
+
+import Modal from "@/components/Modal.vue";
 import ImageGallery from '@/components/ImageGallery.vue';
 
 export type ImageMetadata = {
@@ -64,7 +65,7 @@ onUnmounted(() => {
                 <div class="lg:col-span-6 text-base leading-relaxed text-white/70">
                     <slot name="description">
                         <span v-if="typeof timeline.description === 'function'">
-                            <component :is="timeline.description" />
+                            <component :is="timeline.description" class="text-justify me-10" />
                         </span>
                         <span v-else>
                             {{ timeline.description }}

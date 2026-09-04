@@ -17,6 +17,7 @@ const timelineEntries = ref([
         description: () => h('div', [
             h('p', [
                 "Specialized in backend security and optimizing computer vision infrastructure. ",
+                "As the first intern class, my work was foundational and most features were completely built from scratch."
             ]),
         ]),
         images: [

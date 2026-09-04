@@ -14,19 +14,25 @@ function toggleSkill(skillAlt) {
 
 import JavaLogo from '@/assets/logos/stack/java.png'
 import SQLLogo from '@/assets/logos/stack/sqlalchemy.png'
+import TorchLogo from '@/assets/logos/stack/torch.png'
 import JupyterLogo from '@/assets/logos/stack/jupyter.png'
+import AWSLogo from '@/assets/logos/stack/aws.png'
+import ClickHouseLogo from '@/assets/logos/stack/clickhouse.png'
 import PythonLogo from '@/assets/logos/stack/python.png'
 import JavaScriptLogo from '@/assets/logos/stack/javascript.png'
 import VoltaLogo from '@/assets/logos/stack/volta.png'
 import AndroidLogo from '@/assets/logos/stack/androidstudio.png'
+import NvidiaLogo from '@/assets/logos/stack/nvidia.png'
 import VueLogo from '@/assets/logos/stack/vuejs.png'
 import DjangoLogo from '@/assets/logos/stack/django.png'
+import LangGraphLogo from '@/assets/logos/stack/langgraph.png'
 import ReactLogo from '@/assets/logos/stack/reactjs.png'
 import TailwindLogo from '@/assets/logos/stack/tailwind.png'
-import CLogo from '@/assets/logos/stack/clang.png'
 import CCLogo from '@/assets/logos/stack/c++.png'
+import StripeLogo from '@/assets/logos/stack/stripe.png'
 import BootstrapLogo from '@/assets/logos/stack/bootstrap.png'
 import CSharpLogo from '@/assets/logos/stack/csharp.png'
+import GCPLogo from '@/assets/logos/stack/gcp.png'
 import FlaskLogo from '@/assets/logos/stack/flask.png'
 import PrismaLogo from '@/assets/logos/stack/prisma.png'
 import UnityLogo from '@/assets/logos/stack/unity.png'
@@ -34,20 +40,26 @@ import UnityLogo from '@/assets/logos/stack/unity.png'
 const skills = [
     { src: JavaLogo, alt: 'Java', shadowColor: '#E51F2F' },
     { src: SQLLogo, alt: 'SQL', shadowColor: '#ce4359' },
+    { src: TorchLogo, alt: 'Torch', shadowColor: '#ee4d2e' },
     { src: JupyterLogo, alt: 'Jupyter', shadowColor: '#E87125' },
+    { src: AWSLogo, alt: 'AWS', shadowColor: '#fa6504' },
+    { src: ClickHouseLogo, alt: 'ClickHouse', shadowColor: '#fdcc05' },
     { src: PythonLogo, alt: 'Python', shadowColor: '#F1CA3F' },
     { src: JavaScriptLogo, alt: 'JS', shadowColor: '#EDD619' },
     { src: VoltaLogo, alt: 'Volta', shadowColor: '#edda87' },
     { src: AndroidLogo, alt: 'Android', shadowColor: '#87ba53' },
+    { src: NvidiaLogo, alt: 'TensorRT', shadowColor: '#78b903' },
     { src: DjangoLogo, alt: 'Django', shadowColor: '#2aaa78' },
     { src: VueLogo, alt: 'Vue.js', shadowColor: '#42b883' },
+    { src: LangGraphLogo, alt: 'LangGraph', shadowColor: '#1c3c3c' },
     { src: ReactLogo, alt: 'React', shadowColor: '#5CD2F0' },
     { src: TailwindLogo, alt: 'Tailwind', shadowColor: '#33B6EE' },
-    { src: CCLogo, alt: 'C++', shadowColor: '#0c72be' },
-    { src: CLogo, alt: 'C', shadowColor: '#33B6EE' },
+    { src: CCLogo, alt: 'C/C++', shadowColor: '#0c72be' },
     { src: PrismaLogo, alt: 'Prisma', shadowColor: '#0c344b' },
+    { src: StripeLogo, alt: 'Stripe', shadowColor: '#523afd' },
     { src: BootstrapLogo, alt: 'Bootstrap', shadowColor: '#7A27F0' },
     { src: CSharpLogo, alt: 'C#', shadowColor: '#36128A' },
+    { src: GCPLogo, alt: 'GCP', shadowColor: '#757575' },
     { src: FlaskLogo, alt: 'Flask', shadowColor: '#6b6b6b' },
     { src: UnityLogo, alt: 'Unity', shadowColor: '#1C2834' },
 ]
