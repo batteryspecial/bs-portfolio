@@ -2,52 +2,71 @@
 import { ref, h } from 'vue'
 import TimelineEntry from '@/sections/Timeline.vue'
 
-import Statsyuk1 from "@/assets/exp/y1/1.png"
-import Statsyuk2 from "@/assets/exp/y1/2.png"
-import Statsyuk3 from "@/assets/exp/y1/3.png"
-import Statsyuk4 from "@/assets/exp/y1/4.png"
-import Statsyuk5 from "@/assets/exp/y1/5.png"
-import Statsyuk6 from "@/assets/exp/y1/6.png"
+import Statsyuk1 from "@/assets/exp/statsyuk/1.png"
+import Statsyuk2 from "@/assets/exp/statsyuk/2.png"
+import Statsyuk3 from "@/assets/exp/statsyuk/3.png"
+import Statsyuk4 from "@/assets/exp/statsyuk/4.png"
+import Statsyuk5 from "@/assets/exp/statsyuk/5.png"
+import Statsyuk6 from "@/assets/exp/statsyuk/6.png"
+import Statsyuk7 from "@/assets/exp/statsyuk/7.png"
 
+import Percep1 from "@/assets/exp/percep/1.png"
 
-const timelineEntries = ref([
-    {
-        time: 'April 2026 — August 2026',
-        event: 'Full Stack @ Statsyuk Analytics',
-        description: () => h('div', [
-            h('p', [
-                "Specialized in backend security and optimizing computer vision infrastructure. ",
-                "As the first intern class, my work was foundational and most features were completely built from scratch."
-            ]),
+const timelineEntries = ref([{
+    time: 'April 2026 — August 2026',
+    event: 'Full Stack @ Statsyuk Analytics',
+    description: () => h('div', [
+        h('p', [
+            "Specialized in backend security and optimizing computer vision infrastructure. ",
+            "As the first intern class, my work was foundational and most features were completely built from scratch."
         ]),
-        images: [
-            { 
-                image: Statsyuk1, 
-                caption: "An amortized constant time solution to SAM2 separate-mask run length encoding. Unlike Cutie, SAM2 isolates each object in its own sub-buffer." 
-            },
-            { 
-                image: Statsyuk2, 
-                caption: "Nearly 50% runtime saved from introducing independent pass scheduler modes. Turns out the multi-pass barrier stream was not a necessity."
-            },
-            { 
-                image: Statsyuk3, 
-                caption: "Removing Python memory copy and serialization overhead using C++ resulted in a shocking ~10x speedup that scales inversely with foreground density." 
-            },
-            { 
-                image: Statsyuk4, 
-                caption: "We can convert pipeline stages into parallel processes with bounded queues to handle backpressure and SharedMemory buffers to evade serialization tax." 
-            },
-            { 
-                image: Statsyuk5, 
-                caption: "While we can limit the memory usage of native processes in NVIDIA MPS, external TensorRT engines need a custom CUDA memory tracker and limiter." 
-            },
-            { 
-                image: Statsyuk6,
-                caption: "Cutie took up 200-300ms per frame, motivating an optimized redesign using a mix of pybind11 extensions, TensorRT engine builds, and LibTorch." 
-            }
-        ],
-    },
-]);
+    ]),
+    images: [
+        { 
+            image: Statsyuk1, 
+            caption: "An amortized constant time solution to SAM2 separate-mask run length encoding. Unlike Cutie, SAM2 isolates each object in its own sub-buffer." 
+        },
+        { 
+            image: Statsyuk2, 
+            caption: "Nearly 50% runtime saved from introducing independent pass scheduler modes. Turns out the multi-pass barrier stream was not a necessity."
+        },
+        { 
+            image: Statsyuk3, 
+            caption: "Removing Python memory copy and serialization overhead using C++ resulted in a shocking ~10x speedup that scales inversely with foreground density." 
+        },
+        { 
+            image: Statsyuk4, 
+            caption: "We can convert pipeline stages into parallel processes with bounded queues to handle backpressure and SharedMemory buffers to evade serialization tax." 
+        },
+        { 
+            image: Statsyuk5, 
+            caption: "While we can limit the memory usage of native processes in NVIDIA MPS, external TensorRT engines need a custom CUDA memory tracker and limiter." 
+        },
+        { 
+            image: Statsyuk6,
+            caption: "Cutie took up 200-300ms per frame, motivating an optimized redesign using a mix of pybind11 extensions, TensorRT engine builds, and LibTorch." 
+        },
+        { 
+            image: Statsyuk7,
+            caption: "Decoupling postprocessing analytics from the GPU to a CPU-driven ClickHouse worker allows the pipeline to leverage hardware-level optimizations." 
+        }
+    ],
+}, {
+    time: 'December 2025 — Present',
+    event: 'Developer @ PercepVision AI',
+    description: () => h('div', [
+        h('p', [
+            "My work focused on making website deployment an AI-assisted workflow so the marketing team can effectively contribute. ",
+            "Also contributed to development, optimizing SEO, and outreach API."
+        ]),
+    ]),
+    images: [
+        { 
+            image: Percep1, 
+            caption: "The website was able to gain considerable growth (e.g. 11x increase in views in a single day). PercepVision is currently on track with real customers." 
+        }
+    ],
+}]);
 </script>
 
 <template>

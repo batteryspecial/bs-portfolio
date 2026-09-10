@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, RendererElement, RendererNode, VNode } from 'vue';
 
+// @ts-expect-error Modal.vue is a Vue SFC without a generated TypeScript declaration.
 import Modal from "@/components/Modal.vue";
 import ImageGallery from '@/components/ImageGallery.vue';
 
@@ -46,7 +47,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="group relative flex w-full gap-6 pb-12 transition-all duration-300">
+    <div class="group relative flex w-full gap-6  transition-all duration-300">
         <div class="relative flex flex-col items-center">
             <div class="z-10 h-3 w-3 rounded-full bg-white/80 ring-4 ring-white/10 transition-all duration-300 group-hover:bg-white group-hover:ring-white/30 group-hover:shadow-[0_0_12px_rgba(255,255,255,0.8)]"></div>
             <div class="h-full w-[2px] bg-gradient-to-b from-white/30 via-white/10 to-transparent"></div>
