@@ -36,7 +36,7 @@ const updateSocialLinksPosition = () => {
 const introItems = ref([{
     id: 1,
     content: () => h('span', [
-        "I worked on EngHacks 2025 with ", 
+        "I worked on EngHacks 2025 as a frontend director with ", 
         h(InlineEntry, {
             logo: engsoclogo, 
             color: 'purple',
@@ -51,24 +51,24 @@ const introItems = ref([{
             logo: orbitalogo, 
             color: 'blue',
             href: 'https://www.uworbital.com/'
-        }, { default: () => "Orbital's" }),
-        " amateur radio station (ARO)."
+        }, { default: () => "Orbital" }),
+        ", and their amateur radio station (ARO)."
     ])
 }, {
     id: 3,
     content: () => h('span', [
-        "I just completed my first work term at ", 
+        "I completed my first work term at ", 
         h(InlineEntry, {
             logo: statsyuklogo, 
             color: 'black',
             href: 'https://www.statsyuk.ca/'
         }, { default: () => "Statsyuk Analytics" }),
-        "!"
+        ", where I worked across high-level web apps and low-level computer vision infrastructure."
     ])
 }, {
     id: 4,
     content: () => h('span', [
-        "Currently reading more about CUDA and low-level CV principles."
+        "Currently reading more about CUDA and low-level computing principles."
     ])
 }])
 
@@ -88,7 +88,7 @@ onUnmounted(() => {
     <div class="flex flex-col mx-auto justify-center flex-1 py-8 xl:w-[85%] lg:w-[90%] w-full">
         <section class="flex items-center justify-center relative mx-auto w-full">
             <!-- Left: Text Column -->
-            <div class="w-full xl:w-1/2 lg:w-2/3 md:w-3/4 flex flex-col items-center">
+            <div class="w-full xl:w-7/12 lg:w-2/3 md:w-3/4 flex flex-col items-center">
                 <div class="px-5 lg:px-20">
                     <div class="relative flex items-center gap-4 sm:gap-6">
                         <div class="relative group w-auto shrink-0">
@@ -120,7 +120,7 @@ onUnmounted(() => {
                                 at the University of Waterloo. I'm an engineer, but a scientist and 
                                 explorer at heart. This website only documents my technical ventures.
                             </p>
-                            <ul class="list-disc dashed-list">
+                            <ul class="list-disc dashed-list flex flex-col items-start">
                                 <li v-for="item in introItems" :key="item.id">
                                     <component :is="item.content" />
                                 </li>

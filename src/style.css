@@ -42,6 +42,7 @@ html::-webkit-scrollbar {
     border-radius: 6px;
     text-decoration: none;
     position: relative;
+    white-space: nowrap;
     transition: all 0.3s ease;
     padding: 0 2px;
     text-decoration: underline;
@@ -124,16 +125,18 @@ button:focus-visible {
 }
 
 .dashed-list {
-    list-style-type: none;
-    padding-left: 1.5rem;
+  list-style-type: none;
+  padding-left: 1.5rem;
 }
 .dashed-list li {
     position: relative;
+    padding-left: 1.5rem;
+    text-indent: -1.25rem;
+    
 }
 .dashed-list li::before {
     content: "— ";
-    display: inline-block;
-    width: 1.5rem;
+    text-align: justify;
 }
 
 #app {
