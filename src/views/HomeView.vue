@@ -13,6 +13,7 @@ import waterloologo from '@/assets/logos/uwaterloo.png';
 import orbitalogo from '@/assets/logos/uworbital.png'
 import engsoclogo from '@/assets/logos/engsoc.png'
 import statsyuklogo from '@/assets/logos/statsyuk.svg'
+import perceplogo from '@/assets/logos/percepvision.png'
 
 const contactinfo = [
     { src: linkedinicon, alt: 'LinkedIn', href: 'https://www.linkedin.com/in/qinkai-li-40198b31a/' },
@@ -46,13 +47,13 @@ const introItems = ref([{
 }, {
     id: 2,
     content: () => h('span', [
-        "I am a major contributor to ", 
+        "I am an active contributor to ", 
         h(InlineEntry, {
             logo: orbitalogo, 
             color: 'blue',
             href: 'https://www.uworbital.com/'
         }, { default: () => "Orbital" }),
-        ", and their amateur radio station (ARO)."
+        ", especially for the amateur radio station (ARO)."
     ])
 }, {
     id: 3,
@@ -68,7 +69,18 @@ const introItems = ref([{
 }, {
     id: 4,
     content: () => h('span', [
-        "Currently reading more about CUDA and low-level computing principles."
+        "I work part-time at ", 
+        h(InlineEntry, {
+            logo: perceplogo, 
+            color: 'blue',
+            href: 'https://www.percepvision.com/'
+        }, { default: () => "PercepVision AI" }),
+        ", where we use AI to power intelligent security solutions."
+    ])
+}, {
+    id: 5,
+    content: () => h('span', [
+        "Continuing to deepen my understanding of high performance low-level systems in areas like AI infrastructure, and most recently, compilers =)"
     ])
 }])
 
